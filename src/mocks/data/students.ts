@@ -1,4 +1,12 @@
-export const students = [
+type Students = {
+	id: string;
+	name: string;
+	attendance: string;
+	average: string;
+	group: string;
+}[];
+
+export const students: Students = [
 	{
 		id: '1',
 		name: 'Adam Romański',

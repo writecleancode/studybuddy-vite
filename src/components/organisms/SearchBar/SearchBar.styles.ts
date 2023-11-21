@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Input } from 'src/components/atoms/Input/StyledInput';
+import { Input } from '../../atoms/Input/StyledInput';
 
 export const SearchBarWrapper = styled.div`
 	grid-row: 1 / 2;
@@ -39,7 +39,7 @@ export const SearchWrapper = styled.div`
 	max-width: 550px;
 `;
 
-export const SearchResults = styled.ul`
+export const SearchResults = styled.ul<{ $isVisible: boolean | number }>`
 	position: absolute;
 	top: 38px;
 	left: 0;
@@ -58,7 +58,7 @@ export const SearchResults = styled.ul`
 	overflow-y: scroll;
 `;
 
-export const SearchResultsItem = styled.li`
+export const SearchResultsItem = styled.li<{ $isHighlighted: boolean }>`
 	padding: 20px 8px;
 	width: 100%;
 	background-color: ${({ theme, $isHighlighted }) => ($isHighlighted ? theme.colors.lightPurple : theme.colors.white)};

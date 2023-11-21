@@ -1,9 +1,19 @@
 import PropTypes from 'prop-types';
-import { Label } from 'src/components/atoms/Label/StyledLabel';
-import { Input } from 'src/components/atoms/Input/StyledInput';
+import { Label } from '../../atoms/Label/StyledLabel';
+import { Input } from '../../atoms/Input/StyledInput';
 import { Wrapper } from './FormField.styles';
 
-export const FormField = ({ checked, value, onChange, label, name, id, type = 'text' }) => {
+type FormProps = {
+	checked: boolean,
+	value: string,
+	onChange: () => void,
+	label: string,
+	name: string,
+	id: string,
+	type: string
+}
+
+export const FormField = ({ checked, value, onChange, label, name, id, type = 'text' }: FormProps) => {
 	return (
 		<Wrapper>
 			<Label htmlFor={name}>{label}</Label>

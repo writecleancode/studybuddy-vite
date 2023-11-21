@@ -1,7 +1,18 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { ArticleWrapper, ContentWrapper, NewsSectionHeader, TitleWrapper, Wrapper } from './NewsSection.styles';
-import { Button } from 'src/components/atoms/Button/StyledButton';
+import { Button } from '../../atoms/Button/StyledButton';
+
+type Articles = {
+	id: string;
+	title: string;
+	category: string;
+	content: string;
+	image: {
+		url: string;
+		alt: string;
+	};
+};
 
 export const query = `
 {
@@ -19,7 +30,7 @@ export const query = `
 `;
 
 export const NewsSection = () => {
-	const [articles, setArticles] = useState([]);
+	const [articles, setArticles] = useState<never[] | Articles[]>([]);
 	const [error, setError] = useState('');
 
 	useEffect(() => {

@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useStudents } from 'src/hooks/useStudents';
-import { StudentsListItem } from 'src/components/molecules/StudentsListItem/StudentsListItem';
+import { useStudents } from '../../../hooks/useStudents';
 import { StyledList, StyledTitle } from './StudentsList.styles';
+import { StudentsListItem } from '../../molecules/StudentsListItem/StudentsListItem';
+
+type Student = {
+	name: string;
+	attendance: string;
+	average: string;
+};
 
 export const StudentsList = () => {
-	const [students, setStudents] = useState([]);
+	const [students, setStudents] = useState<never[] | Student[]>([]);
 	const { id } = useParams();
 	const { getStudents } = useStudents();
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ViewWrapper } from 'src/components/molecules/ViewWrapper/ViewWrapper';
+import { ViewWrapper } from '../components/molecules/ViewWrapper/ViewWrapper';
 
 export const Wrapper = styled.div`
 	display: flex;

@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
-import { theme } from 'src/assets/styles/theme';
-import { GlobalStyle } from 'src/assets/styles/GlobalStyle';
-import { MainTemplate } from 'src/components/templates/MainTemplate/MainTemplate';
+import { MainTemplate } from '../components/templates/MainTemplate/MainTemplate';
+import { theme } from '../assets/styles/theme';
+import { GlobalStyle } from '../assets/styles/GlobalStyle';
 import { Dashboard } from './Dashboard';
 import { Wrapper } from './Root.styles';
 

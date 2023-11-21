@@ -1,6 +1,6 @@
 import { HttpResponse, http } from 'msw';
-import { students } from 'src/mocks/data/students';
-import { groups } from 'src/mocks/data/groups';
+import { students } from '../data/students';
+import { groups } from '../data/groups';
 
 export const handlers = [
 	http.get('/groups', () => {
