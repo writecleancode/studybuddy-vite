@@ -11,15 +11,11 @@ type Student = {
 	average: string;
 };
 
-type inputValueType = {
-	inputValue: string;
-};
-
 export const SearchBar = () => {
 	const [matchingStudents, setMatchingStudents] = useState<never[] | Student[]>([]);
 	const { findStudents } = useStudents();
 
-	const getMatchingStudents = debounce(async ({ inputValue }: inputValueType) => {
+	const getMatchingStudents = debounce(async ({ inputValue }) => {
 		const results = await findStudents(inputValue);
 		setMatchingStudents(results);
 	}, 500);
