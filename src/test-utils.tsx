@@ -1,12 +1,17 @@
 import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './assets/styles/theme';
+import { ReactNode } from 'react';
 
-const AllTheProviders = ({ children }) => {
+type AllTheProvidersProps = {
+	children: ReactNode;
+};
+
+const AllTheProviders = ({ children }: AllTheProvidersProps) => {
 	return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
-const customRender = (ui, options) => render(ui, { wrapper: AllTheProviders, ...options });
+const customRender = (ui: any, options: object) => render(ui, { wrapper: AllTheProviders, ...options });
 
 // re-export everything
 export * from '@testing-library/react';
