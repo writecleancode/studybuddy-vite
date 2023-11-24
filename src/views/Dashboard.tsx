@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
-import { useStudents } from '../hooks/useStudents';
-import { StudentsList } from '../components/organisms/StudentsList/StudentsList';
-import { StyledTitle } from '../components/atoms/StyledTitle/StyledTitle';
+import { useStudents } from 'src/hooks/useStudents';
+import { StudentsList } from 'src/components/organisms/StudentsList/StudentsList';
+import { StyledTitle } from 'src/components/atoms/StyledTitle/StyledTitle';
 import { GroupWrapper, TitleWrapper, Wrapper } from './Dashboard.styles';
 
 export const Dashboard = () => {

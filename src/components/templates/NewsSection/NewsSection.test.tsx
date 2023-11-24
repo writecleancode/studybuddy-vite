@@ -1,4 +1,4 @@
-import { render, screen } from '../../../test-utils';
+import { render, screen } from 'src/test-utils';
 import MockAdapter from 'axios-mock-adapter';
 import axios from 'axios';
 import { NewsSection, query } from './NewsSection';

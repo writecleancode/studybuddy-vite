@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useStudents } from '../../../hooks/useStudents';
+import { useStudents } from 'src/hooks/useStudents';
+import { StudentsListItem } from 'src/components/molecules/StudentsListItem/StudentsListItem';
 import { StyledList, StyledTitle } from './StudentsList.styles';
-import { StudentsListItem } from '../../molecules/StudentsListItem/StudentsListItem';
 
 type Student = {
 	name: string;

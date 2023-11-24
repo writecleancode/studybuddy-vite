@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Button } from 'src/components/atoms/Button/StyledButton';
 import { ArticleWrapper, ContentWrapper, NewsSectionHeader, TitleWrapper, Wrapper } from './NewsSection.styles';
-import { Button } from '../../atoms/Button/StyledButton';
 
 type Articles = {
 	id: string;

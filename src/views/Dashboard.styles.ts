@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { ViewWrapper } from '../components/molecules/ViewWrapper/ViewWrapper';
+import { ViewWrapper } from 'src/components/molecules/ViewWrapper/ViewWrapper';
 
 export const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-    align-items: center;
+	align-items: center;
 	width: 100%;
 	height: 100%;
 `;
@@ -17,7 +17,7 @@ export const TitleWrapper = styled.div`
 	display: flex;
 	justify-content: flex-start;
 	width: 100%;
-    max-width: 500px;
+	max-width: 500px;
 
 	nav a {
 		display: inline-block;

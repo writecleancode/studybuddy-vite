@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { ViewWrapper } from '../../molecules/ViewWrapper/ViewWrapper';
-import { Button } from '../../atoms/Button/StyledButton';
+import { ViewWrapper } from 'src/components/molecules/ViewWrapper/ViewWrapper';
+import { Button } from 'src/components/atoms/Button/StyledButton';
 
 export const Wrapper = styled.div`
 	grid-row: 1 / 3;

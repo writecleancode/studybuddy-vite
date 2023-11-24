@@ -8,6 +8,15 @@ export default defineConfig({
 	resolve: {
 		alias: {
 			src: '/src',
+			// assets: '/src/assets',
+			// components: '/src/components',
+			// helpers: '/src/helpers',
+			// hooks: '/src/hooks',
+			// mocks: '/src/mocks',
+			// providers: '/src/providers',
+			// store: '/src/store',
+			// types: '/src/providers',
+			// views: '/src/views',
 		},
 	},
 	test: {

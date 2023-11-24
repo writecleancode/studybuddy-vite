@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { Root } from './views/Root';
+import { Root } from 'src/views/Root';
 import 'src/assets/styles/fonts.css';
-import { worker } from './mocks/browser';
+import { worker } from 'src/mocks/browser';
 
 worker
 	.start({

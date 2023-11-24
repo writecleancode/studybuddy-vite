@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Input } from '../../atoms/Input/StyledInput';
+import { Input } from 'src/components/atoms/Input/StyledInput';
 
 export const SearchBarWrapper = styled.div`
 	grid-row: 1 / 2;

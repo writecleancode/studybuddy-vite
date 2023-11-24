@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useCombobox } from 'downshift';
-import { useStudents } from '../../../hooks/useStudents';
+import { useStudents } from 'src/hooks/useStudents';
 import debounce from 'lodash.debounce';
-import { Input } from '../../atoms/Input/StyledInput';
+import { Input } from 'src/components/atoms/Input/StyledInput';
 import { SearchBarWrapper, SearchResults, SearchResultsItem, SearchWrapper, StatusInfo } from './SearchBar.styles';
 
 type Student = {

@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import { render } from '@testing-library/react';
 import { ThemeProvider } from 'styled-components';
-import { theme } from './assets/styles/theme';
+import { theme } from 'src/assets/styles/theme';
 
 type AllTheProvidersProps = {
 	children: ReactNode;

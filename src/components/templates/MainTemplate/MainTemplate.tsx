@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { Navigation } from '../../organisms/Navigation/Navigation';
-import { SearchBar } from '../../organisms/SearchBar/SearchBar';
-import { NewsSection } from '../NewsSection/NewsSection';
+import { Navigation } from 'src/components/organisms/Navigation/Navigation';
+import { SearchBar } from 'src/components/organisms/SearchBar/SearchBar';
+import { NewsSection } from 'src/components/templates/NewsSection/NewsSection';
 import { Wrapper } from './MainTemplate.styles';
 
 type MainTemplateProps = {
