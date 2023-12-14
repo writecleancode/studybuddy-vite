@@ -3,7 +3,6 @@ import { Input } from 'src/components/atoms/Input/StyledInput';
 import { Wrapper } from './FormField.styles';
 
 type FormProps = {
-	checked: boolean;
 	value: string;
 	onChange: () => void;
 	label: string;
@@ -12,11 +11,11 @@ type FormProps = {
 	type: string;
 };
 
-export const FormField = ({ checked, value, onChange, label, name, id, type = 'text' }: FormProps) => {
+export const FormField = ({ value, onChange, label, name, id, type = 'text' }: FormProps) => {
 	return (
 		<Wrapper>
 			<Label htmlFor={name}>{label}</Label>
-			<Input value={value} checked={checked} onChange={onChange} name={name} id={id} type={type} data-testid={label} />
+			<Input value={value} onChange={onChange} name={name} id={id} type={type} data-testid={label} />
 		</Wrapper>
 	);
 };

@@ -2,6 +2,7 @@ import { styled } from 'styled-components';
 
 export const Wrapper = styled.div`
 	margin-left: 24px;
+	margin-right: 24px;
 `;
 
 export const StyledName = styled.p`
