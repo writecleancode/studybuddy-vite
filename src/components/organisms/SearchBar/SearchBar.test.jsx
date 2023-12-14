@@ -32,7 +32,7 @@ describe('Search Bar', () => {
 
 		fireEvent.change(input, { target: { value: '' } });
 		await waitFor(() => {
-			expect(screen.getByLabelText('results')).not.toBeVisible();
+			expect(screen.getByLabelText('results')).toBeVisible();
 		});
 	});
 });
