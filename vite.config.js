@@ -9,6 +9,7 @@ export default defineConfig({
 			src: '/src',
 		},
 	},
+	appType: 'mpa',
 	test: {
 		globals: true,
 		environment: 'jsdom',

@@ -1,14 +1,24 @@
 import { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { useStudents } from 'src/hooks/useStudents';
+import { useModal } from 'src/components/organisms/Modal/useModal';
 import { StudentsList } from 'src/components/organisms/StudentsList/StudentsList';
-import { GroupWrapper, TitleWrapper, Wrapper } from './Dashboard.styles';
+import { Modal } from 'src/components/organisms/Modal/Modal';
 import { StyledTitle } from 'src/components/atoms/StyledTitle/StyledTitle';
+import { GroupWrapper, TitleWrapper, Wrapper } from './Dashboard.styles';
 
 export const Dashboard = () => {
 	const [groups, setGroups] = useState([]);
+	const [currentStudent, setCurrentStudent] = useState({});
 	const { id } = useParams();
-	const { getGroups } = useStudents();
+	const { getGroups, getStudentById } = useStudents();
+	const { isOpen, handleOpenModal, handleCloseModal } = useModal();
+
+	const handleOpenStudentDetails = async id => {
+		const student = await getStudentById(id);
+		setCurrentStudent(student);
+		handleOpenModal();
+	};
 
 	useEffect(() => {
 		(async () => {
@@ -32,7 +42,12 @@ export const Dashboard = () => {
 				</nav>
 			</TitleWrapper>
 			<GroupWrapper>
-				<StudentsList />
+				<StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
+				{isOpen ? (
+					<Modal currentStudent={currentStudent} handleClose={handleCloseModal}>
+						<StyledTitle>{currentStudent.name}</StyledTitle>
+					</Modal>
+				) : null}
 			</GroupWrapper>
 		</Wrapper>
 	);
