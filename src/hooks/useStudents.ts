@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 import axios from 'axios';
 
 type groupIdType = string | undefined;
+type studentIdType = number | undefined;
 
 export const useStudents = () => {
 	const getGroups = useCallback(async () => {
@@ -13,10 +14,19 @@ export const useStudents = () => {
 		}
 	}, []);
 
-	const getStudents = useCallback(async (groupId: groupIdType) => {
+	const getStudentsByGroup = useCallback(async (groupId: groupIdType) => {
 		try {
-			const { data } = await axios.get(`/students/${groupId}`);
+			const { data } = await axios.get(`/groups/${groupId}`);
 			return data.students;
+		} catch (err) {
+			console.log(err);
+		}
+	}, []);
+
+	const getStudentById = useCallback(async (studentId: studentIdType) => {
+		try {
+			const { data } = await axios.get(`/students/${studentId}`);
+			return data.student;
 		} catch (err) {
 			console.log(err);
 		}
@@ -33,8 +43,9 @@ export const useStudents = () => {
 	};
 
 	return {
-		getGroups: getGroups,
-		getStudents: getStudents,
-		findStudents: findStudents,
+		getGroups,
+		getStudentsByGroup,
+		getStudentById,
+		findStudents,
 	};
 };

@@ -8,11 +8,12 @@ type Student = {
 		attendance: string;
 		average: string;
 	};
+	onClick: () => void;
 };
 
-export const StudentsListItem = ({ userData: { name, attendance, average } }: Student) => {
+export const StudentsListItem = ({ userData: { name, attendance, average }, ...props }: Student) => {
 	return (
-		<StyledListItem>
+		<StyledListItem {...props}>
 			<StyledAverage $average={Number(average)}>{average}</StyledAverage>
 			<StyledInfo name={name} attendance={attendance} />
 			<DeleteButton />

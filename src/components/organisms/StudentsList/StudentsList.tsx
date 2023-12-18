@@ -4,30 +4,36 @@ import { useStudents } from 'src/hooks/useStudents';
 import { StudentsListItem } from 'src/components/molecules/StudentsListItem/StudentsListItem';
 import { StyledList, StyledTitle } from './StudentsList.styles';
 
+type StudentsListProps = {
+	handleOpenStudentsDetails: (id: number) => void
+}
+
 type Student = {
+	id: number;
 	name: string;
 	attendance: string;
 	average: string;
+	group: string;
 };
 
-export const StudentsList = () => {
+export const StudentsList = ({ handleOpenStudentsDetails }: StudentsListProps) => {
 	const [students, setStudents] = useState<never[] | Student[]>([]);
 	const { id } = useParams();
-	const { getStudents } = useStudents();
+	const { getStudentsByGroup } = useStudents();
 
 	useEffect(() => {
 		(async () => {
-			const data = await getStudents(id);
+			const data = await getStudentsByGroup(id);
 			setStudents(data);
 		})();
-	}, [id, getStudents]);
+	}, [id, getStudentsByGroup]);
 
 	return (
 		<>
 			<StyledTitle>Students list</StyledTitle>
 			<StyledList>
 				{students.map(userData => (
-					<StudentsListItem key={userData.name} userData={userData} />
+					<StudentsListItem onClick={() => {handleOpenStudentsDetails(userData.id)}} key={userData.name} userData={userData} />
 				))}
 			</StyledList>
 		</>
