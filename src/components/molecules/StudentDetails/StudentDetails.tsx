@@ -1,19 +1,35 @@
 import { StyledTitle } from 'src/components/atoms/StyledTitle/StyledTitle';
-import { StyledAverage } from '../StudentsListItem/StudentsListItem.styles';
+import { StyledAverage } from 'src/components/atoms/StyledAverage/StyledAverage';
+import {
+	BigAverage,
+	StyledDetails,
+	StyledInfo,
+	StyledLabel,
+	StyledSubjectInfo,
+	Wrapper,
+} from './StudentDetails.styles';
 import { Student } from 'src/views/Dashboard';
 
 type StudentDetailsProps = {
-	currentStudent: Student | Record<string, never>;
+	student: Student | Record<string, never>;
 };
 
-export const StudentDetails = ({ currentStudent }: StudentDetailsProps) => {
+export const StudentDetails = ({ student }: StudentDetailsProps) => {
 	return (
-		<div>
-			<StyledTitle>
-				{currentStudent.name} | Group {currentStudent.group}
-			</StyledTitle>
-			<p>Attendance: {currentStudent.attendance}</p>
-			<StyledAverage $average={Number(currentStudent.average)}>{currentStudent.average}</StyledAverage>
-		</div>
+		<Wrapper>
+			<BigAverage $average={Number(student.average)}>{student.average}</BigAverage>
+			<StyledTitle $isBig>{student.name}</StyledTitle>
+			<StyledDetails>
+				<StyledLabel>Course:</StyledLabel>
+				<StyledInfo $isBig>{student.course}</StyledInfo>
+				<StyledLabel>Average grades:</StyledLabel>
+				{student.grades.map(({ subject, average }) => (
+					<StyledSubjectInfo key={subject}>
+						<StyledInfo>{subject}</StyledInfo>
+						<StyledAverage $average={Number(average)}>{average}</StyledAverage>
+					</StyledSubjectInfo>
+				))}
+			</StyledDetails>
+		</Wrapper>
 	);
 };

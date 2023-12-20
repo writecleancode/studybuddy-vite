@@ -6,14 +6,14 @@ import { Student } from 'src/views/Dashboard';
 
 type ModalProps = {
 	handleCloseModal: () => void;
-	currentStudent: Student | Record<string, never>;
+	student: Student | Record<string, never>;
 };
 
-export const Modal = ({ handleCloseModal, currentStudent }: ModalProps) => {
+export const Modal = ({ handleCloseModal, student }: ModalProps) => {
 	return createPortal(
 		<ModalWrapper>
-			<StudentDetails currentStudent={currentStudent} />
-			<Button onClick={handleCloseModal}>Close modal</Button>
+			<StudentDetails student={student} />
+			<Button onClick={handleCloseModal}>Close</Button>
 		</ModalWrapper>,
 		document.body
 	);
