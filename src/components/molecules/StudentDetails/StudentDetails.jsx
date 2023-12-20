@@ -1,14 +1,23 @@
 import { StyledTitle } from 'src/components/atoms/StyledTitle/StyledTitle';
-import { StyledAverage } from '../StudentsListItem/StudentsListItem.styles';
+import { StyledAverage } from 'src/components/atoms/StyledAverage/StyledAverage';
+import { BigAverage, StyledDetails, StyledInfo, StyledLabel, StyledSubjectInfo, Wrapper } from './StudentDetails.styles';
 
-export const StudentDetails = ({ currentStudent }) => {
+export const StudentDetails = ({ student }) => {
 	return (
-		<div>
-			<StyledTitle>
-				{currentStudent.name} | Group {currentStudent.group}
-			</StyledTitle>
-			<p>{currentStudent.attendance}</p>
-			<StyledAverage $average={currentStudent.average}>{currentStudent.average}</StyledAverage>
-		</div>
+		<Wrapper>
+			<BigAverage $average={student.average}>{student.average}</BigAverage>
+			<StyledTitle $isBig>{student.name}</StyledTitle>
+			<StyledDetails>
+				<StyledLabel>Course:</StyledLabel>
+				<StyledInfo $isBig>{student.course}</StyledInfo>
+				<StyledLabel>Average grades:</StyledLabel>
+				{student.grades.map(({ subject, average }) => (
+					<StyledSubjectInfo key={subject}>
+						<StyledInfo>{subject}</StyledInfo>
+						<StyledAverage $average={average}>{average}</StyledAverage>
+					</StyledSubjectInfo>
+				))}
+			</StyledDetails>
+		</Wrapper>
 	);
 };

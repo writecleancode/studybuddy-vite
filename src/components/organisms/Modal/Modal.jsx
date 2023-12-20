@@ -3,11 +3,11 @@ import { StudentDetails } from 'src/components/molecules/StudentDetails/StudentD
 import { Button } from 'src/components/atoms/Button/StyledButton';
 import { ModalWrapper } from './Modal.styles';
 
-export const Modal = ({ handleClose, currentStudent }) => {
+export const Modal = ({ handleClose, student }) => {
 	return createPortal(
 		<ModalWrapper>
-			<StudentDetails currentStudent={currentStudent} />
-			<Button onClick={handleClose}>Close modal</Button>
+			<StudentDetails student={student} />
+			<Button onClick={handleClose}>Close</Button>
 		</ModalWrapper>,
 		document.body
 	);

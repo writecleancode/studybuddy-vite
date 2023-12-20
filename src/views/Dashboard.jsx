@@ -7,6 +7,29 @@ import { Modal } from 'src/components/organisms/Modal/Modal';
 import { StyledTitle } from 'src/components/atoms/StyledTitle/StyledTitle';
 import { GroupWrapper, TitleWrapper, Wrapper } from './Dashboard.styles';
 
+const mockStudent = {
+	id: '1',
+	name: 'Adam Romański',
+	attendance: '39%',
+	average: '2.3',
+	group: 'A',
+	course: 'Business Philosophy',
+	grades: [
+		{
+			subject: 'Business Philosophy',
+			average: '3.3',
+		},
+		{
+			subject: 'Marketing',
+			average: '4.7',
+		},
+		{
+			subject: 'Modern Economy',
+			average: '2.5',
+		},
+	],
+};
+
 export const Dashboard = () => {
 	const [groups, setGroups] = useState([]);
 	const [currentStudent, setCurrentStudent] = useState({});
@@ -44,7 +67,7 @@ export const Dashboard = () => {
 			<GroupWrapper>
 				<StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
 				{isOpen ? (
-					<Modal currentStudent={currentStudent} handleClose={handleCloseModal}>
+					<Modal student={mockStudent} handleClose={handleCloseModal}>
 						<StyledTitle>{currentStudent.name}</StyledTitle>
 					</Modal>
 				) : null}
