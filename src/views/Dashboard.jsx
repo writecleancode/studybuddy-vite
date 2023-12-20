@@ -66,11 +66,7 @@ export const Dashboard = () => {
 			</TitleWrapper>
 			<GroupWrapper>
 				<StudentsList handleOpenStudentDetails={handleOpenStudentDetails} />
-				{isOpen ? (
-					<Modal student={mockStudent} handleClose={handleCloseModal}>
-						<StyledTitle>{currentStudent.name}</StyledTitle>
-					</Modal>
-				) : null}
+				<Modal student={mockStudent} isOpen={isOpen} handleClose={handleCloseModal} />
 			</GroupWrapper>
 		</Wrapper>
 	);
