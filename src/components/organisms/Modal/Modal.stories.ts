@@ -7,6 +7,7 @@ const meta = {
 		layout: 'centered',
 	},
 	args: {
+		isOpen: true,
 		student: {
 			id: '1',
 			name: 'Adam Romański',

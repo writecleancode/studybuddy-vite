@@ -81,7 +81,7 @@ export const Dashboard = () => {
 			</TitleWrapper>
 			<GroupWrapper>
 				<StudentsList handleOpenStudentsDetails={handleOpenStudentsDetails} />
-				{isOpen ? <Modal handleCloseModal={handleCloseModal} student={mockStudent} /> : null}
+				<Modal isOpen={isOpen} handleCloseModal={handleCloseModal} student={mockStudent} />
 			</GroupWrapper>
 		</Wrapper>
 	);
