@@ -18,6 +18,6 @@ StudentsListItem.propTypes = {
 	userData: PropTypes.shape({
 		name: PropTypes.string.isRequired,
 		attendance: PropTypes.string.isRequired,
-		average: PropTypes.string.isRequired,
+		average: PropTypes.number.isRequired,
 	}),
 };
