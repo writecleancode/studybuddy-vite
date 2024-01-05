@@ -13,7 +13,7 @@ export const handlers = [
 	http.get('/groups/:id', ({ params }) => {
 		if (params.id === 'undefined') {
 			return HttpResponse.json({
-				students: db.student.findMany
+				students: db.student.findMany,
 			});
 		}
 
@@ -56,9 +56,16 @@ export const handlers = [
 
 	http.post('/students/search', async ({ request }) => {
 		const data = await request.json();
-		const matchingStudents = data.searchPhrase
-			? students.filter(student => student.name.toLowerCase().includes(data.searchPhrase.toLowerCase()))
-			: [];
+		// const matchingStudents = data.searchPhrase
+		// 	? students.filter(student => student.name.toLowerCase().includes(data.searchPhrase.toLowerCase()))
+		// 	: [];
+		const matchingStudents = db.student.findMany({
+			where: {
+				name: {
+					contains: data.searchPhrase.toLowerCase(),
+				},
+			},
+		});
 		return HttpResponse.json({
 			students: matchingStudents,
 		});
