@@ -11,8 +11,3 @@ const createStudents = () => {
 };
 
 createStudents();
-
-window.mocks = {
-	createStudents,
-	getStudents: () => db.student.getAll(),
-};

@@ -11,7 +11,7 @@ const uppercaseFirstLatter = word => word.slice(0, 1).toUpperCase() + word.slice
 
 export const db = factory({
 	student: {
-		id: primaryKey(() => faker.string.uuid),
+		id: primaryKey(() => faker.string.uuid()),
 		name: () => `${faker.person.firstName()} ${faker.person.lastName()}`,
 		attendance: () => `${faker.number.int({ min: 0, max: 100 })}%`,
 		average: getRandomAverage,

@@ -13,7 +13,7 @@ export const handlers = [
 	http.get('/groups/:id', ({ params }) => {
 		if (params.id === 'undefined') {
 			return HttpResponse.json({
-				students: students,
+				students: db.student.findMany
 			});
 		}
 
@@ -32,7 +32,7 @@ export const handlers = [
 	http.get('/students/:id', ({ params }) => {
 		if (!params.id)
 			return HttpResponse.json({
-				student: students,
+				student: db.student.findFirst,
 			});
 
 		const matchingStudent = db.student.findFirst({
