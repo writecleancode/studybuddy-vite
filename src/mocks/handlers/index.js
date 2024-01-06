@@ -1,5 +1,4 @@
 import { HttpResponse, http } from 'msw';
-import { students } from 'src/mocks/data/students';
 import { groups } from 'src/mocks/data/groups';
 import { db } from '../db';
 
@@ -56,13 +55,11 @@ export const handlers = [
 
 	http.post('/students/search', async ({ request }) => {
 		const data = await request.json();
-		// const matchingStudents = data.searchPhrase
-		// 	? students.filter(student => student.name.toLowerCase().includes(data.searchPhrase.toLowerCase()))
-		// 	: [];
 		const matchingStudents = db.student.findMany({
 			where: {
 				name: {
-					contains: data.searchPhrase.toLowerCase(),
+					// contains: data.searchPhrase.toLowerCase(),
+					contains: data.searchPhrase,
 				},
 			},
 		});
