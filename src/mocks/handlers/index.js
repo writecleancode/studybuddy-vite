@@ -1,18 +1,20 @@
 import { HttpResponse, http } from 'msw';
-import { groups } from 'src/mocks/data/groups';
 import { db } from '../db';
 
 export const handlers = [
 	http.get('/groups', () => {
+		const groups = db.group.getAll();
+		const groupNames = groups.map(group => group.id);
 		return HttpResponse.json({
-			groups: groups,
+			groups: groupNames,
 		});
 	}),
 
 	http.get('/groups/:id', ({ params }) => {
 		if (params.id === 'undefined') {
 			return HttpResponse.json({
-				students: db.student.findMany,
+				status: 404,
+				error: 'Please prodive the group ID',
 			});
 		}
 
@@ -29,10 +31,11 @@ export const handlers = [
 	}),
 
 	http.get('/students/:id', ({ params }) => {
-		if (!params.id)
+		if (!params.id) {
 			return HttpResponse.json({
 				student: db.student.findFirst,
 			});
+		}
 
 		const matchingStudent = db.student.findFirst({
 			where: {

@@ -1,10 +1,9 @@
 import { factory, primaryKey } from '@mswjs/data';
 import { faker } from '@faker-js/faker';
 
-faker.seed(999);
+faker.seed(5);
 
 const groups = ['A', 'B', 'C'];
-const eventTypes = ['workshop', 'exam', 'lecture'];
 const getRandomAverage = () => faker.number.float({ min: 2, max: 5, precision: 0.1 });
 const getRandomValue = (array, index) => array[index];
 const uppercaseFirstLatter = word => word.slice(0, 1).toUpperCase() + word.slice(1);
@@ -32,5 +31,8 @@ export const db = factory({
 				average: getRandomAverage(),
 			},
 		],
+	},
+	group: {
+		id: primaryKey(String),
 	},
 });
