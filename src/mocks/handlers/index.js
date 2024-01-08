@@ -12,9 +12,8 @@ export const handlers = [
 
 	http.get('/groups/:id', ({ params }) => {
 		if (params.id === 'undefined') {
-			return HttpResponse.json({
+			return new HttpResponse('Please prodive the group ID', {
 				status: 404,
-				error: 'Please prodive the group ID',
 			});
 		}
 
@@ -46,9 +45,8 @@ export const handlers = [
 		});
 		// const matchingStudent = students.find(student => student.id === params.id);
 		if (!matchingStudent)
-			return HttpResponse.json({
+			return new HttpResponse('No matching student', {
 				status: 404,
-				error: 'No matching student',
 			});
 
 		return HttpResponse.json({
