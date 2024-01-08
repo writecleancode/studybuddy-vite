@@ -1,19 +1,19 @@
 import { HttpResponse, http } from 'msw';
-import { groups } from 'src/mocks/data/groups';
-import { students } from 'src/mocks/data/students';
 import { db } from '../db';
 
 export const handlers = [
 	http.get('/groups', () => {
+		const groups = db.group.getAll();
+		const groupNames = groups.map(group => group.id);
 		return HttpResponse.json({
-			groups: groups,
+			groups: groupNames,
 		});
 	}),
 
 	http.get('/groups/:id', ({ params }) => {
 		if (params.id === 'undefined') {
-			return HttpResponse.json({
-				students: db.student.findMany({}),
+			return new HttpResponse('Please provide the group ID', {
+				status: 404,
 			});
 		}
 
@@ -55,9 +55,13 @@ export const handlers = [
 
 	http.post('/students/search', async ({ request }) => {
 		const { searchPhrase }: any = await request.json();
-		const matchingStudents = searchPhrase
-			? students.filter(student => student.name.toLowerCase().includes(searchPhrase.toLowerCase()))
-			: [];
+		const matchingStudents = db.student.findMany({
+			where: {
+				name: {
+					contains: searchPhrase,
+				},
+			},
+		});
 		return HttpResponse.json({
 			students: matchingStudents,
 		});

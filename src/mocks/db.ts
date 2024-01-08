@@ -33,4 +33,7 @@ export const db = factory({
 				},
 			] as any,
 	},
+	group: {
+		id: primaryKey(String),
+	},
 });
