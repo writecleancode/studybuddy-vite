@@ -4,7 +4,7 @@ import { authenticateRequest } from '../helpers';
 
 const sanitizeUser = user => {
 	const { password, ...rest } = user;
-	return user;
+	return rest;
 };
 
 export const auth = [

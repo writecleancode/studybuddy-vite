@@ -32,7 +32,6 @@ export const UnathenticatedApp = ({ handleSignIn }) => {
 	const {
 		register,
 		handleSubmit,
-		watch,
 		formState: { errors },
 	} = useForm();
 	const onSubmit = ({ login, password }) => handleSignIn({ login, password });
