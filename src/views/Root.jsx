@@ -28,17 +28,16 @@ export const AuthenticatedApp = () => {
 	);
 };
 
-export const UnathenticatedApp = ({ handleSignIn }) => {
+export const UnathenticatedApp = ({ handleSignIn, loginError }) => {
 	const {
 		register,
 		handleSubmit,
 		formState: { errors },
 	} = useForm();
-	const onSubmit = ({ login, password }) => handleSignIn({ login, password });
 
 	return (
 		<form
-			onSubmit={handleSubmit(onSubmit)}
+			onSubmit={handleSubmit(handleSignIn)}
 			style={{
 				display: 'flex',
 				flexDirection: 'column',
@@ -46,22 +45,32 @@ export const UnathenticatedApp = ({ handleSignIn }) => {
 				alignItems: 'center',
 				height: '100vh',
 			}}>
-			<FormField label='Login' name='login' id='login' autoComplete='username' {...register('login')} />
+			<FormField
+				label='Login'
+				name='login'
+				id='login'
+				autoComplete='username'
+				{...register('login', { required: true })}
+			/>
+			{errors.login && <span>Login is required</span>}
 			<FormField
 				label='Password'
 				name='password'
 				id='passwrd'
 				type='password'
 				autoComplete='current-password'
-				{...register('password')}
+				{...register('password', { required: true })}
 			/>
+			{errors.password && <span>Password is required</span>}
 			<Button type='submit'>Sign in</Button>
+			{loginError && <span>{loginError}</span>}
 		</form>
 	);
 };
 
 export const Root = () => {
 	const [user, setUser] = useState(null);
+	const [error, setError] = useState(null);
 
 	useEffect(() => {
 		const token = localStorage.getItem('token');
@@ -90,7 +99,7 @@ export const Root = () => {
 			setUser(response.data);
 			localStorage.setItem('token', response.data.token);
 		} catch (err) {
-			console.log(err);
+			setError('Please provide valid user data');
 		}
 	};
 
@@ -98,7 +107,7 @@ export const Root = () => {
 		<Router>
 			<ThemeProvider theme={theme}>
 				<GlobalStyle />
-				{user ? <AuthenticatedApp /> : <UnathenticatedApp handleSignIn={handleSignIn} />}
+				{user ? <AuthenticatedApp /> : <UnathenticatedApp loginError={error} handleSignIn={handleSignIn} />}
 			</ThemeProvider>
 		</Router>
 	);
