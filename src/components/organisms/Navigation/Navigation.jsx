@@ -1,13 +1,16 @@
+import { useAuth } from 'src/hooks/useAuth';
 import { Logo, StyledLink, Wrapper } from './Navigation.styles';
 
 export const Navigation = () => {
+	const { signOut } = useAuth();
+
 	return (
 		<Wrapper>
 			<Logo>
 				<p>Study Buddy</p>
 			</Logo>
 			<StyledLink to='/group'>Dashboard</StyledLink>
-			<StyledLink as='a' onClick={() => localStorage.removeItem('token')}>
+			<StyledLink as='a' onClick={signOut}>
 				Log out
 			</StyledLink>
 		</Wrapper>
