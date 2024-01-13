@@ -1,7 +1,11 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
-const AuthContext = createContext({});
+const AuthContext = createContext({
+	user: {},
+	signIn: () => {},
+	signOut: () => {},
+});
 
 export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
@@ -36,6 +40,7 @@ export const AuthProvider = ({ children }) => {
 			console.log(err);
 		}
 	};
+
 	const signOut = () => {
 		setUser(null);
 		localStorage.removeItem('token');
