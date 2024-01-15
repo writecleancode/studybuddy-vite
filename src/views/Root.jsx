@@ -1,11 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { useAuth } from 'src/hooks/useAuth';
+import { useError } from 'src/hooks/useError';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { MainTemplate } from 'src/components/templates/MainTemplate/MainTemplate';
 import { Dashboard } from './Dashboard';
 import { Wrapper } from './Root.styles';
 import { FormField } from 'src/components/molecules/FormField/FormField';
 import { Button } from 'src/components/atoms/Button/StyledButton';
+import { ErrorMessage } from 'src/components/molecules/ErrorMessage/ErrorMessage';
 
 export const AuthenticatedApp = () => {
 	return (
@@ -65,6 +67,12 @@ export const UnathenticatedApp = () => {
 
 export const Root = () => {
 	const auth = useAuth();
+	const { error } = useError();
 
-	return auth.user ? <AuthenticatedApp /> : <UnathenticatedApp />;
+	return (
+		<>
+			{error ? <ErrorMessage message={error} /> : null}
+			{auth.user ? <AuthenticatedApp /> : <UnathenticatedApp />}
+		</>
+	);
 };
