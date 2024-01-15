@@ -1,5 +1,6 @@
 import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { useError } from './useError';
 
 type AuthProviderProps = {
 	children: ReactNode;
@@ -21,6 +22,7 @@ export const AuthContext = createContext<AuthContextType>({
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
 	const [user, setUser] = useState(null);
+	const { dispatchError } = useError();
 
 	useEffect(() => {
 		const token = localStorage.getItem('token');
@@ -49,7 +51,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 			setUser(response.data);
 			localStorage.setItem('token', response.data.token);
 		} catch (err) {
-			console.log(err);
+			dispatchError('Wrong login or password');
 		}
 	};
 

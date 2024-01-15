@@ -1,24 +1,4 @@
-type Theme = {
-	colors: {
-		white: string;
-		lightGrey: string;
-		grey: string;
-		darkGrey: string;
-		black: string;
-		success: string;
-		error: string;
-		warning: string;
-		lightPurple: string;
-	};
-	fontSize: {
-		xl: string;
-		l: string;
-		m: string;
-		s: string;
-	};
-};
-
-export const theme: Theme = {
+export const theme = {
 	colors: {
 		white: '#FFFFFF',
 		lightGrey: '#F7F8FA',
@@ -27,6 +7,7 @@ export const theme: Theme = {
 		black: '#111111',
 		success: '#8FCB81',
 		error: '#CB8581',
+		lightError: '#FF8383',
 		warning: '#E1D888',
 		lightPurple: '#ECEFF7',
 	},

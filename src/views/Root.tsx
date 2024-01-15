@@ -6,6 +6,8 @@ import { Wrapper } from './Root.styles';
 import { FormField } from 'src/components/molecules/FormField/FormField';
 import { Button } from 'src/components/atoms/Button/StyledButton';
 import { useAuth } from 'src/hooks/useAuth';
+import { useError } from 'src/hooks/useError';
+import { ErrorMessage } from 'src/components/molecules/ErrorMessage/ErrorMessage';
 
 export const AuthenticatedApp = () => {
 	return (
@@ -62,6 +64,12 @@ export const UnauthenticatedApp = () => {
 
 export const Root = () => {
 	const auth = useAuth();
+	const { error } = useError();
 
-	return auth.user ? <AuthenticatedApp /> : <UnauthenticatedApp />;
+	return (
+		<>
+			{error ? <ErrorMessage message={error} /> : null}
+			{auth.user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+		</>
+	);
 };
