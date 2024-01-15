@@ -8,7 +8,7 @@ const ErrorContext = createContext({
 export const ErrorProvider = ({ children }) => {
 	const [error, setError] = useState('');
 
-	const dispatchError = message => useCallback(setError(message), []);
+	const dispatchError = useCallback(message => setError(message), []);
 
 	return <ErrorContext.Provider value={{ error, dispatchError }}>{children}</ErrorContext.Provider>;
 };
