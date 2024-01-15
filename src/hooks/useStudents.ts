@@ -4,6 +4,21 @@ import axios from 'axios';
 type groupIdType = string | undefined;
 type studentIdType = number | undefined;
 
+const studentsAPI = axios.create({});
+
+studentsAPI.interceptors.request.use(
+	config => {
+		const token = localStorage.getItem('token');
+
+		if (token) config.headers.Authorization = `Bearer ${token}`;
+
+		return config;
+	},
+	function (error) {
+		return Promise.reject(error);
+	}
+);
+
 export const useStudents = () => {
 	const getGroups = useCallback(async () => {
 		try {

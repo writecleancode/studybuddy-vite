@@ -33,7 +33,6 @@ export const auth = [
 	http.get('/me', ({ request }) => {
 		if (authenticateRequest(request)) {
 			const user = db.teacher.getAll();
-			console.log(user);
 			return HttpResponse.json({
 				...sanitizeUser(user),
 			});
