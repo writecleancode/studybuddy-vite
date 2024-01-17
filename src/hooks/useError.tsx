@@ -17,7 +17,12 @@ export const ErrorContext = createContext<ErrorContextType>({
 export const ErrorProvider = ({ children }: ErrorProviderProps) => {
 	const [error, setError] = useState('');
 
-	const dispatchError = useCallback((message: string) => setError(message), []);
+	const dispatchError = useCallback((message: string) => {
+		setError(message);
+		setTimeout(() => {
+			setError('');
+		}, 7000);
+	}, []);
 
 	return <ErrorContext.Provider value={{ error, dispatchError }}>{children}</ErrorContext.Provider>;
 };
