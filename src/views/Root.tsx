@@ -57,7 +57,7 @@ export const UnauthenticatedApp = () => {
 				{...register('password', { required: true })}
 			/>
 			{errors.password && <span>Password is required</span>}
-			<Button type='submit'>Sign In</Button>
+			<Button type='submit'>Sign in</Button>
 		</form>
 	);
 };

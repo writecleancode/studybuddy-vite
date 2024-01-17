@@ -1,14 +1,13 @@
 import { ReactNode } from 'react';
 import { render } from '@testing-library/react';
-import { ThemeProvider } from 'styled-components';
-import { theme } from 'src/assets/styles/theme';
+import { AppProviders } from './providers/AppProviders';
 
 type AllTheProvidersProps = {
 	children: ReactNode;
 };
 
 const AllTheProviders = ({ children }: AllTheProvidersProps) => {
-	return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+	return <AppProviders>{children}</AppProviders>;
 };
 
 const customRender = (ui: any, options?: object) => render(ui, { wrapper: AllTheProviders, ...options });

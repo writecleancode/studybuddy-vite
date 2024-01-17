@@ -1,5 +1,4 @@
 import { fireEvent, render, screen } from 'src/test-utils';
-import '@testing-library/jest-dom';
 import { SearchBar } from './SearchBar';
 
 describe('Search Bar', () => {
