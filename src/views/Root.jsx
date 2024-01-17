@@ -54,7 +54,7 @@ export const UnathenticatedApp = () => {
 			<FormField
 				label='Password'
 				name='password'
-				id='passwrd'
+				id='password'
 				type='password'
 				autoComplete='current-password'
 				{...register('password', { required: true })}
