@@ -8,6 +8,7 @@ import { Wrapper } from './Root.styles';
 import { FormField } from 'src/components/molecules/FormField/FormField';
 import { Button } from 'src/components/atoms/Button/StyledButton';
 import { ErrorMessage } from 'src/components/molecules/ErrorMessage/ErrorMessage';
+import { Notes } from './Notes';
 
 export const AuthenticatedApp = () => {
 	return (
@@ -18,6 +19,7 @@ export const AuthenticatedApp = () => {
 					<Route path='/group'>
 						<Route path=':id?' element={<Dashboard />} />
 					</Route>
+					<Route path='/notes' element={<Notes />} />
 				</Routes>
 			</Wrapper>
 		</MainTemplate>
