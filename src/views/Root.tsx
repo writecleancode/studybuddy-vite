@@ -1,13 +1,14 @@
 import { useForm } from 'react-hook-form';
+import { useAuth } from 'src/hooks/useAuth';
+import { useError } from 'src/hooks/useError';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { MainTemplate } from 'src/components/templates/MainTemplate/MainTemplate';
 import { Dashboard } from './Dashboard';
-import { Wrapper } from './Root.styles';
+import { Notes } from './Notes';
 import { FormField } from 'src/components/molecules/FormField/FormField';
 import { Button } from 'src/components/atoms/Button/StyledButton';
-import { useAuth } from 'src/hooks/useAuth';
-import { useError } from 'src/hooks/useError';
 import { ErrorMessage } from 'src/components/molecules/ErrorMessage/ErrorMessage';
+import { Wrapper } from './Root.styles';
 
 export const AuthenticatedApp = () => {
 	return (
@@ -18,6 +19,7 @@ export const AuthenticatedApp = () => {
 					<Route path='/group'>
 						<Route path=':id?' element={<Dashboard />} />
 					</Route>
+					<Route path='/notes' element={<Notes />} />
 				</Routes>
 			</Wrapper>
 		</MainTemplate>
